@@ -1,4 +1,26 @@
+// on reset le css
+@import './reset.scss';
+
+.body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 .header {
+    width: 100%;
     height: 4vh;
     background-color: purple;
+}
+
+.footer {
+    height: 4vh;
+    background-color: purple;
+}
+
+.text-success {
+    font-weight: bold;
+}
+
+.text-danger {
+    font-weight: bold;
 }

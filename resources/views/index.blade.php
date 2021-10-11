@@ -15,16 +15,30 @@
                 </tr>
             </thead>
             <tbody class="table-body">
-                <tr>
-                    <td>18/05/2021</td>
-                    <td>{{ $ethPurchasedValue }}</td>
-                    <td>{{ $ethValueForFistPurchased }}€</td>
-                    <td>{{ $tokenNumber }}</td>
-                    <td>{{ $priceEth  }}</td>
-                    <td>{{ $intantTEurValue }}</td>
-                    <td>{{ $ethEvoRate }}</td>
-                    <td><span class="text-success">{{ $gainOrLoss }} €</span></td>
-                </tr>
+                @foreach($ethDataDisplayed as $position)
+                    <tr class="text-center">
+                        <td>{{ $position['date_achat'] }}</td>
+                        <td>{{ $position['prix_achat'] }}</td>
+                        <td>{{ $position['valeur_eth_achat'] }}€</td>
+                        <td>{{ $position['nombre_jeton'] }}</td>
+                        <td>{{ $priceEth  }}</td>
+                        <td><strong>{{ $position['instantT_Eur_valeur'] }}€</strong></td>
+                        <td>
+                            @if(str_contains($position['taux_evo'], '+'))
+                                <span class="text-success">{{ $position['taux_evo'] }}</span>
+                            @else
+                                <span class="text-danger">{{ $position['taux_evo'] }}</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if(str_contains($position['gain_loss'], "+"))
+                                <span class="text-success">{{ $position['gain_loss'] }} €</span>
+                            @else
+                                <span class="text-danger">{{ $position['gain_loss'] }} €</span>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

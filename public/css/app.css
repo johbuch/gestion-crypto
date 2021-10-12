@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -58,6 +59,7 @@ table {
   padding: 0;
   background-color: #2E2E3E;
   color: #fff;
+  font-family: "Nunito", sans-serif;
 }
 
 .header {
@@ -75,12 +77,20 @@ table {
   color: #fff !important;
 }
 
-.text-success {
+.text-positive {
   font-weight: bold;
+  background: linear-gradient(#2EC7A8, #33BD6D);
+  border-radius: 20px;
+  padding: 0.5em;
+  color: #fff;
 }
 
-.text-danger {
+.text-negative {
   font-weight: bold;
+  background: linear-gradient(#f263c0, #f221a9);
+  border-radius: 20px;
+  padding: 0.5em;
+  color: #fff;
 }
 
 .card-eth {
@@ -91,10 +101,30 @@ table {
   background: #2E2E3E !important;
   box-shadow: 10px 10px 18px #1b1b25, -10px -10px 18px #414157;
 }
+.card-eth .titre-header {
+  display: flex;
+  justify-content: space-between;
+}
+.card-eth .titre-header .add {
+  font-weight: bold;
+  font-size: 1.3em;
+  background: linear-gradient(#2EC7A8, #33BD6D);
+  border-radius: 20px;
+  padding: 0.1em 0.5em;
+  color: #fff;
+}
+.card-eth .table th {
+  border-right: 1px solid #2EC7A8;
+  text-align: right;
+}
 
 /* neomorphism
 border-radius: 62px;
 background: #2E2E3E;
 box-shadow:  5px 5px 15px #23232f,
              -5px -5px 15px #39394d;
+ */
+/*
+vert foncé #33BD6D
+vert clair #2EC7A8
  */

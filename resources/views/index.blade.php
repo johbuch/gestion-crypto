@@ -1,10 +1,14 @@
 @include('layout._head')
     <div>
         <div class="card card-eth table-responsive">
-            <h4 class="card-title">ETH</h4>
-            <table class="table table-responsive table-hover">
+            <div class="titre-header">
+                <div><h4 class="card-title">ETH</h4></div>
+                <div><span class="add">+</span></div>
+            </div>
+
+            <table class="table table-responsive table-borderless">
                 <tr>
-                    <th>date</th>
+                    <th>Date</th>
                     @foreach($ethDataDisplayed as $position)
                         <td>{{ $position['date_achat'] }}</td>
                     @endforeach
@@ -44,9 +48,9 @@
                     @foreach($ethDataDisplayed as $position)
                         <td>
                             @if(str_contains($position['taux_evo'], '+'))
-                                <span class="text-success">{{ $position['taux_evo'] }}</span>
+                                <span class="text-positive">{{ $position['taux_evo'] }}</span>
                             @else
-                                <span class="text-danger">{{ $position['taux_evo'] }}</span>
+                                <span class="text-negative">{{ $position['taux_evo'] }}</span>
                             @endif
                         </td>
                     @endforeach
@@ -56,9 +60,9 @@
                     @foreach($ethDataDisplayed as $position)
                         <td>
                             @if(str_contains($position['gain_loss'], "+"))
-                                <span class="text-success">{{ $position['gain_loss'] }} €</span>
+                                <span class="text-positive">{{ $position['gain_loss'] }} €</span>
                             @else
-                                <span class="text-danger">{{ $position['gain_loss'] }} €</span>
+                                <span class="text-negative">{{ $position['gain_loss'] }} €</span>
                             @endif
                         </td>
                     @endforeach

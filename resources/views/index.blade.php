@@ -69,7 +69,12 @@
                 </tr>
             </table>
             <div>
-                Gain total : 100
+                Gain total :
+                @if($totalGainOrLossEth > 0)
+                    <span class="text-positive">+{{ $totalGainOrLossEth }} €</span>
+                @else
+                    <span class="text-negative">+{{ $totalGainOrLossEth }} €</span>
+                @endif
             </div>
         <div>
     </div>

@@ -18,7 +18,13 @@ class Controller extends BaseController
         $priceEth = $this->getCurrentEthPrice();
         $ethDataDisplayed = $this->getEthData($priceEth);
 
-        return view('index', compact('ethDataDisplayed','priceEth'));
+        // on déclare une variable pour calculer le total profit ou perte eth
+        $totalGainOrLossEth = 0;
+        foreach ($ethDataDisplayed as $eth) {
+            // on incrémente pour avoir le total (gain perte en €) à la fin du foreach
+            $totalGainOrLossEth += $eth['gain_loss'];
+        }
+        return view('index', compact('ethDataDisplayed','priceEth', 'totalGainOrLossEth'));
 
     }
 
@@ -45,6 +51,7 @@ class Controller extends BaseController
         // on initialise le tableau des données qui sera affichées
         $ethDataDisplayed = [];
         $ethData = Eth::all();
+        $totalGainOrLoss = 0;
         foreach($ethData as $position) {
             $ethDataDisplayed[$position->id]['date_achat'] = date('d/m/Y', strtotime($position->purchase_date));
             $ethDataDisplayed[$position->id]['prix_achat'] = $position->purchase_price;
@@ -68,6 +75,7 @@ class Controller extends BaseController
                 $gainOrLoss = '+' . $gainOrLoss;
             }
             $ethDataDisplayed[$position->id]['gain_loss'] = $gainOrLoss;
+            $totalGainOrLoss += $gainOrLoss;
         }
 
         return $ethDataDisplayed;
